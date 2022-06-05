@@ -76,7 +76,7 @@ class Cuti extends CI_Controller
 		);
 		$this->M_cuti->update($data,$id);
 		$this->session->set_flashdata('success',' Data cuti disetujui');
-		redirect('cuti');
+		redirect('cuti/approval');
 	}
 
 	public function not_approve($id=""){
@@ -85,7 +85,7 @@ class Cuti extends CI_Controller
 		);
 		$this->M_cuti->update($data,$id);
 		$this->session->set_flashdata('success',' Data cuti tidak disetujui');
-		redirect('cuti');
+		redirect('cuti/approval');
 	}
 
 	public function delete($id)

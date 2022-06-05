@@ -82,7 +82,7 @@
                                     <a href="<?= base_url(); ?>cuti/not_approve/<?=$rowcuti->id?>"
                                     class="btn"
                                     >
-                                    <i class="fa fa-close" style='color: red'></i>
+                                    <i class="fa fa-times" style='color: red'></i>
                                     </a>
                                 </td>
                             </tr>
