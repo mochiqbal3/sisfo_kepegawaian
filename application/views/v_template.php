@@ -105,6 +105,18 @@
                     </p>
                   </a>
                 </li>
+                
+                
+                <li class="nav-item">
+
+                  <a href="<?=base_url();?>cuti/approval/" class="nav-link">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>
+                      Persetujuan Cuti
+                    </p>
+                  </a>
+                </li>
+
 
                 
               <li class="nav-item">

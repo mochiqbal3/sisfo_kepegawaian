@@ -23,6 +23,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query;
         }
 
+        public function getByStatus($status){
+            $this->db->select('leave.*, b.name, c.name pengaju');
+            $this->db->from($this->_table);
+            $this->db->join($this->_table3. " b", 'b.user_id = leave.user_id');
+            $this->db->join($this->_table3. " c", 'c.user_id = leave.user_id');
+            $this->db->where('leave.status', $status);
+            $query = $this->db->get();
+            return $query;
+        }
+
         public function getById($id){
             $this->db->select('*');
             $this->db->from($this->_table);
@@ -36,6 +46,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $result = $this->db->insert($this->_table, $data);
             $insert_id = $this->db->insert_id();
             return $insert_id;
+        }
+
+        public function approve($data, $id){
+            return $this->db->update($this->_table, $data, array('id'=> $id));
+        }
+
+        public function not_approve($data, $id){
+            return $this->db->update($this->_table, $data, array('id'=> $id));
         }
 
         public function update($data, $id){

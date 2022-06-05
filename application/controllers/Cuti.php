@@ -19,6 +19,12 @@ class Cuti extends CI_Controller
         $this->load->view('v_template',$data);
     }
 
+	public function approval()
+    {
+		$data['listcuti'] = $this->M_cuti->getByStatus(1);
+        $data['content'] = 'cuti/v_approve_cuti';
+        $this->load->view('v_template',$data);
+    }
 
 	public function form($id=""){
 		$data['row'] = $this->M_cuti->getById($id);
@@ -43,7 +49,7 @@ class Cuti extends CI_Controller
 				
 			);
 			$idCuti = $this->M_cuti->save($data);
-			$this->session->set_flashdata('success','Data Cuti berhasil ditambahkan');
+			$this->session->set_flashdata('success',' Data Cuti berhasil ditambahkan');
 			redirect('cuti');
 		}else{
 			$data = array(
@@ -59,15 +65,33 @@ class Cuti extends CI_Controller
 				
 			);
 			$this->M_cuti->update($data,$id);
-			$this->session->set_flashdata('success','Data Cuti berhasil diedit');
+			$this->session->set_flashdata('success',' Data Cuti berhasil diedit');
 			redirect('cuti');
 		}
+	}
+
+	public function approve($id=""){
+		$data = array(
+			'status' => '2',
+		);
+		$this->M_cuti->update($data,$id);
+		$this->session->set_flashdata('success',' Data cuti disetujui');
+		redirect('cuti');
+	}
+
+	public function not_approve($id=""){
+		$data = array(
+			'status' => '3',
+		);
+		$this->M_cuti->update($data,$id);
+		$this->session->set_flashdata('success',' Data cuti tidak disetujui');
+		redirect('cuti');
 	}
 
 	public function delete($id)
 	{
 		$this->M_cuti->delete($id);
-		$this->session->set_flashdata('success','Data cuti berhasil dihapus');
+		$this->session->set_flashdata('success',' Data cuti berhasil dihapus');
 		redirect('cuti');
 	}
 }
