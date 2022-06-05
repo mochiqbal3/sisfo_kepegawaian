@@ -7,6 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>JUDUL</title>
+    <link rel="stylesheet" href="<?=base_url('assets');?>/vendor/css/style.css">
     <link href='<?=base_url("assets/uploads/images/avatar.png"); ?>' rel='shortcut icon' type='image/x-icon' />
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
@@ -34,6 +35,7 @@
     <link rel="stylesheet" href="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    
   </head>
   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
@@ -85,9 +87,7 @@
                   </p>
                 </a>
               </li>
-              <?php
-                if($this->session->userdata('role') == 1){
-              ?>
+             
                 <li class="nav-item">
                   <a href="<?=base_url();?>user" class="nav-link">
                     <i class="nav-icon far fa-user"></i>
@@ -96,9 +96,29 @@
                     </p>
                   </a>
                 </li>
-              <?php
-                }
-              ?>
+
+                <li class="nav-item">
+                  <a href="<?=base_url();?>cuti" class="nav-link">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>
+                      Pengajuan Cuti
+                    </p>
+                  </a>
+                </li>
+                
+                
+                <li class="nav-item">
+
+                  <a href="<?=base_url();?>cuti/approval/" class="nav-link">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>
+                      Persetujuan Cuti
+                    </p>
+                  </a>
+                </li>
+
+
+                
               <li class="nav-item">
                 <a href="<?=base_url();?>auth/logout" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>

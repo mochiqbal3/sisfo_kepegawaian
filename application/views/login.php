@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Tugas Besar | Working Report</title>
+  <link rel="stylesheet" href="<?=base_url('assets');?>/vendor/css/style.css">
   <link href='<?=base_url("assets/uploads/images/avatar.png"); ?>' rel='shortcut icon' type='image/x-icon' />
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,12 +21,13 @@
   <link rel="stylesheet" href="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../assets/vendor/css/style.css">
 </head>
 
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="#"><b>Working Report</b></a>
+      <a href="#"><b></b></a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -42,7 +44,7 @@
         <?php
             }
         ?>
-        <p class="login-box-msg">Sign in</p>
+        <p class="login-box-msg">Sign in to account</p>
 
         <form action="<?=base_url();?>auth/login" method="post">
           <div class="input-group mb-3">
@@ -65,8 +67,8 @@
             <div class="col-8">
             </div>
             <!-- /.col -->
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <div class="col-5">
+              <button type="submit" class="button">Sign In</button>
             </div>
             <!-- /.col -->
           </div>
