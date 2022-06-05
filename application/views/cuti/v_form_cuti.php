@@ -43,20 +43,6 @@
             </tr>
             <tr>
                 <td>
-                    Status
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                    <select name="status" class="form-control custom-select">
-                        <option <?=(isset($row->status)?$row->status:'');?> value="Disetujui">Disetujui</option>
-                        <option <?=(isset($row->status)?$row->status:'');?> value="Tidak Disetujui">Tidak Disetujui</option>
-					</select>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     Penanggung Jawab
                 </td>
                 <td>

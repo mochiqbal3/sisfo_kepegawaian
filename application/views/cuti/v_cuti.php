@@ -66,18 +66,26 @@
                                 <td><?=$rowcuti->reason;?></td>
                                 <td><?=$rowcuti->start_date;?></td>
                                 <td><?=$rowcuti->end_date;?></td>
-                                <td><?=$rowcuti->status;?></td>
+                                <td><?php 
+                                if($rowcuti->status == "1" ){
+                                    echo "Menunggu Persetujuan";
+                                }elseif($rowcuti->status == "2" ){
+                                    echo "Disetujui";
+                                }else{
+                                    echo "Ditolak";
+                                }
+                                ?></td>
                                 <td><?=$rowcuti->name;?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>cuti/form/<?=$rowcuti->id?>"
-                                    class="btn btn-primary"
+                                    class="btn"
                                     >
-                                        Edit
+                                    <i class="fa fa-edit" style='color: purple'></i>
                                     </a>
                                     <a href="<?= base_url(); ?>cuti/delete/<?=$rowcuti->id?>"
-                                    class="btn btn-danger"
+                                    class="btn"
                                     >
-                                        Hapus
+                                    <i class="fa fa-trash" style='color: red'></i>
                                     </a>
                                 </td>
                             </tr>

@@ -29,42 +29,36 @@ class Cuti extends CI_Controller
 
 	public function save(){
 		$id = $this->input->post('id');
-		$data = array(
-			
-			'user_id' => $this->session->userdata('userId'),
-			// 'name' => $this->input->post('name'),
-			'reason' => $this->input->post('reason'),
-			'start_date' => $this->input->post('start_date'),
-			'end_date' => $this->input->post('end_date'),
-			'status' => $this->input->post('status'),
-			'responsible' => $this->input->post('responsible'),
-			
-		);
 		if($id==''){
-			$idCuti = $this->M_cuti->save($data);
-			$dataCuti = array(
-				'user_id' => $idCuti,
+			$data = array(
+			
+				'user_id' => $this->session->userdata('userId'),
 				// 'name' => $this->input->post('name'),
 				'reason' => $this->input->post('reason'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
-				'status' => $this->input->post('status'),
+				'status' => '1',
+				// 'status' => $this->input->post('status'),
 				'responsible' => $this->input->post('responsible'),
+				
 			);
+			$idCuti = $this->M_cuti->save($data);
 			$this->session->set_flashdata('success','Data Cuti berhasil ditambahkan');
 			redirect('cuti');
 		}else{
-			$this->M_cuti->update($data,$id);
-			$dataCuti = array(
-				'user_id' => $idCuti,
+			$data = array(
+			
+				'user_id' => $this->session->userdata('userId'),
 				// 'name' => $this->input->post('name'),
 				'reason' => $this->input->post('reason'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
-				'status' => $this->input->post('status'),
+				'status' => '1',
+				// 'status' => $this->input->post('status'),
 				'responsible' => $this->input->post('responsible'),
+				
 			);
-			$this->M_cuti->updateCuti($dataCuti,$id);
+			$this->M_cuti->update($data,$id);
 			$this->session->set_flashdata('success','Data Cuti berhasil diedit');
 			redirect('cuti');
 		}
