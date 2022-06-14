@@ -44,6 +44,7 @@
                             <th>NO</th>
                             <th>PENGAJU</th>
                             <th>ALASAN CUTI</th>
+                            <th>JENIS CUTI</th> 
                             <th>MULAI TANGGAL</th>
                             <th>AKHIR TANGGAL</th>
                             <th>STATUS</th>
@@ -61,6 +62,7 @@
                                 <td><?=$no?></td>
                                 <td><?=$rowcuti->pengaju;?></td>
                                 <td><?=$rowcuti->reason;?></td>
+                                <td><?=$rowcuti->jenis_cuti;?></td>
                                 <td><?=$rowcuti->start_date;?></td>
                                 <td><?=$rowcuti->end_date;?></td>
                                 <td><?php 

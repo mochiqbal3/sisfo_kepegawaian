@@ -87,7 +87,7 @@
                   </p>
                 </a>
               </li>
-             
+                
                 <li class="nav-item">
                   <a href="<?=base_url();?>user" class="nav-link">
                     <i class="nav-icon far fa-user"></i>
@@ -117,8 +117,15 @@
                   </a>
                 </li>
 
+                <li class="nav-item">
+                  <a href="<?=base_url();?>role" class="nav-link">
+                    <i class="nav-icon far fa-user"></i>
+                    <p>
+                      Hak Akses Menu
+                    </p>
+                  </a>
+                </li>
 
-                
               <li class="nav-item">
                 <a href="<?=base_url();?>auth/logout" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
