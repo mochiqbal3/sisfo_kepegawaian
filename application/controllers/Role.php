@@ -2,35 +2,28 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Cuti extends CI_Controller
+class Role extends CI_Controller
 {
 
     function __construct(){
 		parent::__construct();
-		$this->load->model('M_cuti');
+		$this->load->model('M_role');
 		$this->load->model('M_user');
 		$this->load->library('form_validation');
 	}
 
     public function index()
     {
-		$data['listcuti'] = $this->M_cuti->getAll();
-        $data['content'] = 'cuti/v_cuti';
+		$data['listrole'] = $this->M_role->getAll();
+        $data['content'] = 'role/v_role';
         $this->load->view('v_template',$data);
     }
 
-	public function approval()
-    {
-		$data['listcuti'] = $this->M_cuti->getByStatus(1);
-        $data['content'] = 'cuti/v_approve_cuti';
-        $this->load->view('v_template',$data);
-    }
 
 	public function form($id=""){
-		$data['row'] = $this->M_cuti->getById($id);
+		$data['row'] = $this->M_role->getById($id);
 		$data['content'] = 'cuti/v_form_cuti';
-		$data['users'] = $this->M_cuti->getAllUsers()->result();
-		$data['jenis_cuti'] = $this->M_cuti->getAllCuti()->result();
+		$data['users'] = $this->M_role->getAllUsers()->result();
 		$this->load->view('v_template', $data);
 	}
 
@@ -42,7 +35,6 @@ class Cuti extends CI_Controller
 				'user_id' => $this->session->userdata('userId'),
 				// 'name' => $this->input->post('name'),
 				'reason' => $this->input->post('reason'),
-				'jenis_cuti_id' => $this->input->post('jenis_cuti_id'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
 				'status' => '1',
@@ -59,7 +51,6 @@ class Cuti extends CI_Controller
 				'user_id' => $this->session->userdata('userId'),
 				// 'name' => $this->input->post('name'),
 				'reason' => $this->input->post('reason'),
-				'jenis_cuti_id' => $this->input->post('jenis_cuti_id'),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
 				'status' => '1',

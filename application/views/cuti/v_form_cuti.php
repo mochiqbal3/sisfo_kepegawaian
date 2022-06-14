@@ -19,6 +19,27 @@
             </tr>
             <tr>
                 <td>
+                    Jenis_cuti
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <select name="jenis_cuti_id" class="form-control custom-select">
+                    <?php
+								foreach ($jenis_cuti as $row_jenis_cuti) {
+									if (isset($row) && $row_jenis_cuti->id == $row->jenis_cuti_id) {
+										echo '<option value="' . $row_jenis_cuti->id . '" selected>' . $row_jenis_cuti->nama_cuti . '</option>';
+									} else {
+										echo '<option value="' . $row_jenis_cuti->id . '">' . $row_jenis_cuti->nama_cuti . '</option>';
+									}
+								}
+								?>
+                        </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     Tanggal Mulai
                 </td>
                 <td>

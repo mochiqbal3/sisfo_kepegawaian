@@ -1,46 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class M_cuti extends CI_Model {
-        private $_table = 'leave';
-        private $_table2 = 'users';
-        private $_table3 = 'personal_data';
-        private $_table4 = 'jenis_cuti';
+	class M_role extends CI_Model {
+        private $_table = 'user_role';
+        private $_table2 = 'roles';
+        private $_table3 = 'users';
         
         public function getAll(){
-            $this->db->select('leave.*, b.name, c.name pengaju, d.nama_cuti');
+            $this->db->select('user_role.*, b.name, c.username');
             $this->db->from($this->_table);
-            $this->db->join($this->_table3. " b", 'b.user_id = leave.user_id');
-            $this->db->join($this->_table3. " c", 'c.user_id = leave.user_id');
-            $this->db->join($this->_table4. " d", 'd.id = leave.jenis_cuti_id');
+            $this->db->join($this->_table2. " b", 'b.id = user_role.role_id');
+            $this->db->join($this->_table3. " c", 'c.id = user_role.user_id');
+            $query = $this->db->get();
+            return $query;
+        }
+
+        public function getAllRole(){
+            $this->db->select('*');
+            $this->db->from($this->_table2);
             $query = $this->db->get();
             return $query;
         }
 
         public function getAllUsers(){
-            $this->db->select('users.*, b.name');
-            $this->db->from($this->_table2);
-            $this->db->join($this->_table3. " b", 'b.user_id = users.id');
-            $query = $this->db->get();
-            return $query;
-        }
-        public function getAllCuti(){
-            $this->db->select('*');
-            $this->db->from($this->_table4);
+            $this->db->select('users.*, username');
+            $this->db->from($this->_table3);
+            $this->db->join($this->_table. " b", 'b.user_id = users.id');
             $query = $this->db->get();
             return $query;
         }
 
-        public function getByStatus($status){
-            $this->db->select('leave.*, b.name, c.name pengaju, d.nama_cuti');
-            $this->db->from($this->_table);
-            $this->db->join($this->_table3. " b", 'b.user_id = leave.user_id');
-            $this->db->join($this->_table3. " c", 'c.user_id = leave.user_id');
-            $this->db->join($this->_table4. " d", 'd.id = leave.jenis_cuti_id');
-            $this->db->where('leave.status', $status);
-            $query = $this->db->get();
-            return $query;
-        }
 
         public function getById($id){
             $this->db->select('*');
