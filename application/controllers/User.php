@@ -21,7 +21,8 @@ class User extends CI_Controller
 
 	public function form($id=""){
 		$data['row'] = $this->M_user->getById($id);
-		$data['content'] = 'user/v_forM_user';
+		$data['content'] = 'user/v_form_user';
+		$data['roles'] = $this->M_user->getAllRoles()->result();
 		$this->load->view('v_template', $data);
 	}
 
@@ -30,6 +31,8 @@ class User extends CI_Controller
 		$data = array(
 			'username' => $this->input->post('username'),
 			'password' => password_hash("p@55word",PASSWORD_DEFAULT),
+			'role_id' => $this->input->post('role_id'),
+
 		);
 		if($id==''){
 			$idUser = $this->M_user->save($data);
@@ -37,6 +40,8 @@ class User extends CI_Controller
 				'user_id' => $idUser,
 				'nik' => $this->input->post('nik'),
 				'name' => $this->input->post('name'),
+				
+
 			);
 			$this->M_user->savePersonalData($dataPersonal);
 			$this->session->set_flashdata('success','User berhasil ditambahkan');
@@ -47,6 +52,7 @@ class User extends CI_Controller
 				'user_id' => $id,
 				'nik' => $this->input->post('nik'),
 				'name' => $this->input->post('name'),
+				
 			);
 			$this->M_user->updatePersonal($dataPersonal,$id);
 			$this->session->set_flashdata('success','User berhasil diedit');

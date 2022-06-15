@@ -80,6 +80,17 @@
                             }
                         ?>
                     </tbody>
+                    <tfoot>
+                        <th>NO</th>
+                        <th>NAMA</th>
+                        <th>NIK</th>
+                        <th>USERNAME</th>
+                        <th>
+                            <a href="<?= base_url(); ?>user/form"class="btn btn-success">
+                                Tambah Data
+                            </a>
+                        </th>
+                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->
