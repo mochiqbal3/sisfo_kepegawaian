@@ -19,11 +19,11 @@ class Role extends CI_Controller
         $this->load->view('v_template',$data);
     }
 
-
 	public function form($id=""){
 		$data['row'] = $this->M_role->getById($id);
-		$data['content'] = 'cuti/v_form_cuti';
-		$data['users'] = $this->M_role->getAllUsers()->result();
+		$data['content'] = 'role/v_form_role';
+		$data['users'] = $this->M_role->getAll()->result();
+		$data['roles'] = $this->M_role->getAllRoles()->result();
 		$this->load->view('v_template', $data);
 	}
 
@@ -32,60 +32,28 @@ class Role extends CI_Controller
 		if($id==''){
 			$data = array(
 			
-				'user_id' => $this->session->userdata('userId'),
-				// 'name' => $this->input->post('name'),
-				'reason' => $this->input->post('reason'),
-				'start_date' => $this->input->post('start_date'),
-				'end_date' => $this->input->post('end_date'),
-				'status' => '1',
-				// 'status' => $this->input->post('status'),
-				'responsible' => $this->input->post('responsible'),
+				'role_id' => $this->input->post('role_id'),
 				
 			);
-			$idCuti = $this->M_cuti->save($data);
-			$this->session->set_flashdata('success',' Data Cuti berhasil ditambahkan');
-			redirect('cuti');
+			$idRole = $this->M_role->save($data);
+			$this->session->set_flashdata('Success',' Hak Akses berhasil tersimpan');
+			redirect('role');
 		}else{
 			$data = array(
 			
-				'user_id' => $this->session->userdata('userId'),
-				// 'name' => $this->input->post('name'),
-				'reason' => $this->input->post('reason'),
-				'start_date' => $this->input->post('start_date'),
-				'end_date' => $this->input->post('end_date'),
-				'status' => '1',
-				// 'status' => $this->input->post('status'),
-				'responsible' => $this->input->post('responsible'),
+				'role_id' => $this->input->post('role_id'),
 				
 			);
-			$this->M_cuti->update($data,$id);
-			$this->session->set_flashdata('success',' Data Cuti berhasil diedit');
-			redirect('cuti');
+			$this->M_role->update($data,$id);
+			$this->session->set_flashdata('Success',' Hak Akses berhasil terupdate');
+			redirect('role');
 		}
-	}
-
-	public function approve($id=""){
-		$data = array(
-			'status' => '2',
-		);
-		$this->M_cuti->update($data,$id);
-		$this->session->set_flashdata('success',' Data cuti disetujui');
-		redirect('cuti/approval');
-	}
-
-	public function not_approve($id=""){
-		$data = array(
-			'status' => '3',
-		);
-		$this->M_cuti->update($data,$id);
-		$this->session->set_flashdata('success',' Data cuti tidak disetujui');
-		redirect('cuti/approval');
 	}
 
 	public function delete($id)
 	{
-		$this->M_cuti->delete($id);
-		$this->session->set_flashdata('success',' Data cuti berhasil dihapus');
-		redirect('cuti');
+		$this->M_role->delete($id);
+		$this->session->set_flashdata('Success',' Hak Akses berhasil dihapus');
+		redirect('role');
 	}
 }

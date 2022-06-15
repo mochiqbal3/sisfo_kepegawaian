@@ -44,11 +44,7 @@
                             <th>NO</th>
                             <th>USERNAME</th>
                             <th>HAK AKSES</th>
-                            <th>
-                                <a href="<?= base_url(); ?>cuti/form"class="btn btn-success">
-                                    Tambah Data
-                                </a>
-                            </th>
+                            <th>SETTING</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,12 +57,12 @@
                                 <td><?=$rowrole->username;?></td>
                                 <td><?=$rowrole->name;?></td>
                                 <td>
-                                    <a href="<?= base_url(); ?>role/form/<?=$rowcuti->id?>"
+                                    <a href="<?= base_url(); ?>role/form/<?=$rowrole->id?>"
                                     class="btn"
                                     >
                                     <i class="fa fa-edit" style='color: purple'></i>
                                     </a>
-                                    <a href="<?= base_url(); ?>role/delete/<?=$rowcuti->id?>"
+                                    <a href="<?= base_url(); ?>role/delete/<?=$rowrole->id?>"
                                     class="btn"
                                     >
                                     <i class="fa fa-trash" style='color: red'></i>

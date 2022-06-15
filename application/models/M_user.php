@@ -4,11 +4,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	class M_user extends CI_Model {
         private $_table = 'users';
         private $_table2 = 'personal_data';
+        private $_table3 = 'roles';
         
         public function getAll(){
             $this->db->select('users.*, b.name, b.nik');
             $this->db->from($this->_table);
             $this->db->join($this->_table2 . " b",'b.user_id = users.id');
+            $this->db->join($this->_table3 . " c",'c.id = users.role_id');
+            $query = $this->db->get();
+            return $query;
+        }
+
+        public function getAllRoles(){
+            $this->db->select('*');
+            $this->db->from($this->_table3);
             $query = $this->db->get();
             return $query;
         }
