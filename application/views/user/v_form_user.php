@@ -43,6 +43,18 @@
             </tr>
             <tr>
                 <td>
+                    Password
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input type="password" name="password" value=""
+                    required class="form-control"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     Hak Akses
                 </td>
                 <td>
