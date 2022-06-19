@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td>
-                    Jenis_cuti
+                    Jenis Cuti
                 </td>
                 <td>
                     :
