@@ -1,6 +1,8 @@
 <div class="col-sm-12">
     <div class="caption">
+        
         <h3>Form Kategori</h3>
+
     </div>
     <form action="<?=base_url();?>user/save" method="post">
         <input type="hidden" name="id" value="<?= (isset($row->id)?$row->id:'');''?>"
@@ -76,9 +78,13 @@
             </tr>
             <tr>
                 <td></td>
-                <td></td>
+                <td>
+                    
+                </td>
                 <td>
                     <input stle="align-self: flex-end" type="submit" class="btn btn-success" value="Simpan">
+
+                    <a href="<?= base_url(); ?>user"class="btn btn-danger">Kembali</a>
                 </td>
             </tr>
         </table>

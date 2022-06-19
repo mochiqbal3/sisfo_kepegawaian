@@ -92,7 +92,7 @@
               ?>
                 <li class="nav-item">
                   <a href="<?=base_url();?>user" class="nav-link">
-                    <i class="nav-icon far fa-user"></i>
+                    <i class="nav-icon fa fa-user"></i>
                     <p>
                       Data User
                     </p>
@@ -100,7 +100,7 @@
                 </li>
                 <li class="nav-item">
                   <a href="<?=base_url();?>role" class="nav-link">
-                    <i class="nav-icon far fa-user"></i>
+                    <i class="nav-icon fa fa-users"></i>
                     <p>
                       Role
                     </p>
@@ -116,7 +116,7 @@
                 ?>
                <li class="nav-item">
                   <a href="<?=base_url();?>cuti" class="nav-link">
-                    <i class="nav-icon far fa-user"></i>
+                    <i class="nav-icon fa fa-suitcase"></i>
                     <p>
                       Pengajuan Cuti
                     </p>
@@ -133,7 +133,7 @@
                <li class="nav-item">
 
                 <a href="<?=base_url();?>cuti/approval/" class="nav-link">
-                  <i class="nav-icon far fa-user"></i>
+                  <i class="nav-icon fa fa-check-square"></i>
                   <p>
                     Persetujuan Cuti
                   </p>
@@ -143,12 +143,6 @@
                 <?php
                 }
                 ?>
-
-                
-                
-                
-                
-
                 
               <li class="nav-item">
                 <a href="<?=base_url();?>auth/logout" class="nav-link">
