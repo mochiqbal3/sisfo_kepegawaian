@@ -63,15 +63,15 @@
                                 <td><?=$rowuser->nik;?></td>
                                 <td><?=$rowuser->username;?></td>
                                 <td>
-                                    <a href="<?= base_url(); ?>user/form/<?=$rowuser->id?>"
-                                    class="btn btn-primary"
+                                <a href="<?= base_url(); ?>user/form/<?=$rowcuti->id?>"
+                                    class="btn"
                                     >
-                                        Edit
+                                    <i class="fa fa-edit" style='color: purple'></i>
                                     </a>
-                                    <a href="<?= base_url(); ?>user/delete/<?=$rowuser->id?>"
-                                    class="btn btn-danger"
+                                    <a href="<?= base_url(); ?>user/delete/<?=$rowcuti->id?>"
+                                    class="btn"
                                     >
-                                        Hapus
+                                    <i class="fa fa-trash" style='color: red'></i>
                                     </a>
                                 </td>
                             </tr>
