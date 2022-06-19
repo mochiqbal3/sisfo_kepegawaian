@@ -31,6 +31,22 @@ class Cuti extends CI_Controller
 		$data['content'] = 'cuti/v_form_cuti';
 		$data['users'] = $this->M_cuti->getAllUsers()->result();
 		$data['jenis_cuti'] = $this->M_cuti->getAllCuti()->result();
+		$listCuti = $this->M_cuti->getAll()->result();
+		$daydiff = 0;
+		foreach($listCuti as $rowCuti){
+			$a = strtotime($rowCuti->start_date);
+			$b = strtotime($rowCuti->end_date);
+			$datediff = ($b - $a);
+			$daydiff += round($datediff / (60 * 60 * 24) )+ 1;
+		}
+		// echo "<pre>";
+		$found_key = array_search('Cuti Tahunan', array_column($data['jenis_cuti'], 'nama_cuti'));
+		// var_dump($found_key);
+		// echo "</pre>";
+		// exit;
+		if($daydiff>=12){
+			array_splice($data['jenis_cuti'],$found_key,1);
+		}
 		$this->load->view('v_template', $data);
 	}
 

@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->join($this->_table3. " b", 'b.user_id = leave.user_id');
             $this->db->join($this->_table3. " c", 'c.user_id = leave.user_id');
             $this->db->join($this->_table4. " d", 'd.id = leave.jenis_cuti_id');
+            $this->db->where('leave.user_id', $this->session->userdata('userId'));
             $query = $this->db->get();
             return $query;
         }

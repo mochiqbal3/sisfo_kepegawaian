@@ -81,7 +81,7 @@
                   with font-awesome or any other icon font library -->
               <li class="nav-item">
                 <a href="<?=base_url();?>dashboard" class="nav-link">
-                  <i class="nav-icon far fa-user"></i>
+                  <i class="nav-icon fa fa-home"></i>
                   <p>
                     Dashboard
                   </p>

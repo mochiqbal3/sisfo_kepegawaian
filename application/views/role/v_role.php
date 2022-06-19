@@ -62,11 +62,6 @@
                                     >
                                     <i class="fa fa-edit" style='color: purple'></i>
                                     </a>
-                                    <a href="<?= base_url(); ?>role/delete/<?=$rowrole->id?>"
-                                    class="btn"
-                                    >
-                                    <i class="fa fa-trash" style='color: red'></i>
-                                    </a>
                                 </td>
                             </tr>
                         <?php
