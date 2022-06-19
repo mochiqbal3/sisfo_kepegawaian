@@ -93,19 +93,6 @@
                             }
                         ?>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>NO</th>
-                            <th>PENGAJU</th>
-                            <th>ALASAN CUTI</th>
-                            <th>MULAI TANGGAL</th>
-                            <th>AKHIR TANGGAL</th>
-                            <th>STATUS</th>
-                            <th>PENANGGUNG JAWAB</th>
-                            <th>PERSETUJUAN</th>
-                            </th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->

@@ -22,21 +22,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		return $query;
 	}
 
-    public function roles_user($user_id)
-	{
-		$this->db->where('user_id', $user_id);
-        $this->db->join($this->_table3, 'roles.role_id=user_role.role_id');
-		$query = $this->db->get($this->_table2);
-		return $query;
-	}
-
-    public function get_menu($user_id)
-	{
-		$this->db->where('user_id', $user_id);
-        $this->db->join($this->_table4, 'menu_role.id_menu=menus.id');
-		$query = $this->db->get($this->_table5);
-		return $query;
-	}
-
 	}
 ?>
