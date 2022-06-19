@@ -30,7 +30,7 @@ class User extends CI_Controller
 		$id = $this->input->post('id');
 		$data = array(
 			'username' => $this->input->post('username'),
-			'password' => password_hash("p@55word",PASSWORD_DEFAULT),
+			'password' => password_hash($this->input->post('password'),PASSWORD_DEFAULT),
 			'role_id' => $this->input->post('role_id'),
 
 		);

@@ -34,6 +34,7 @@ class Auth extends CI_Controller
                 $this->session->set_userdata('username',$username);
                 $this->session->set_userdata('name',$hasil->name);
                 $this->session->set_userdata('userId',$hasil->id);
+                $this->session->set_userdata('role',$hasil->role_id);
                 redirect('dashboard');
             }else{
                 $this->session->set_flashdata('failed','Password tidak sesuai !');
