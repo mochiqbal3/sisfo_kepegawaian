@@ -63,12 +63,12 @@
                                 <td><?=$rowuser->nik;?></td>
                                 <td><?=$rowuser->username;?></td>
                                 <td>
-                                <a href="<?= base_url(); ?>user/form/<?=$rowcuti->id?>"
+                                <a href="<?= base_url(); ?>user/form/<?=$rowuser->id?>"
                                     class="btn"
                                     >
                                     <i class="fa fa-edit" style='color: purple'></i>
                                     </a>
-                                    <a href="<?= base_url(); ?>user/delete/<?=$rowcuti->id?>"
+                                    <a href="<?= base_url(); ?>user/delete/<?=$rowuser->id?>"
                                     class="btn"
                                     >
                                     <i class="fa fa-trash" style='color: red'></i>
