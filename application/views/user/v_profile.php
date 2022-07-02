@@ -1,9 +1,15 @@
 <div class="col-sm-12">
-    <div class="caption">
-        
-        <h3>PROFILE</h3>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="<?= base_url();?>profile">Profile <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="<?= base_url();?>profile/education">Riwayat Pendidikan</a>
     </div>
+  </div>
+</nav>
     <form action="<?=base_url();?>profile/form_profile" method="post">
         <input type="hidden" name="id" value="<?= (isset($row->id)?$row->id:'');''?>"
         class="form-control" />
@@ -79,7 +85,7 @@
                     required class="form-control"/>
                 </td>
             </tr>
-            
+
             <tr>
                 <td></td>
                 <td>
@@ -88,9 +94,10 @@
                 <td>
                     <input style="align-self: flex-end" type="submit" class="btn btn-success" value="Perbarui">
 
-                    <a href="<?= base_url(); ?>user"class="btn btn-danger">Kembali</a>
+                    <a href="<?= base_url(); ?>dashboard"class="btn btn-danger">Kembali</a>
                 </td>
             </tr>
         </table>
+            </div>
     </form>
 </div>

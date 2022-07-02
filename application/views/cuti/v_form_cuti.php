@@ -2,6 +2,19 @@
     <div class="caption">
         <h3>Form Cuti</h3>
     </div>
+    <?php
+            if($this->session->flashdata('warning')){
+        ?>
+
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <i class="fa fa-check sign" ></i><?= $this->session->flashdata('warning'); ?>
+                </div>
+        <?php
+            }
+        ?>
     <form action="<?=base_url();?>cuti/save" method="post">
         <input type="hidden" name="id" value="<?= (isset($row->id)?$row->id:'');''?>"
         class="form-control" />
@@ -14,7 +27,7 @@
                     :
                 </td>
                 <td>
-                    <textarea name="reason" class="form-control"><?=isset($row->reason)?$row->reason:''?></textarea>
+                    <textarea name="reason" required class="form-control"><?=isset($row->reason)?$row->reason:''?></textarea>
                 </td>
             </tr>
             <tr>
