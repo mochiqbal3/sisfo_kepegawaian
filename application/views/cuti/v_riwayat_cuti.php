@@ -2,7 +2,7 @@
     <div class="thumbnail">
         <div class="caption">
             <h3>
-                Riwayat Cuti - <?= $this->session->userdata('name') ?>
+                Riwayat Cuti
             </h3>
         </div>
         <?php
@@ -49,11 +49,6 @@
                             <th>AKHIR TANGGAL</th>
                             <th>STATUS</th>
                             <th>PENANGGUNG JAWAB</th>
-                            <th>
-                                <a href="<?= base_url(); ?>cuti/form"class="btn btn-success">
-                                    Tambah Data
-                                </a>
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,18 +73,6 @@
                                 }
                                 ?></td>
                                 <td><?=$rowcuti->name;?></td>
-                                <td>
-                                    <a href="<?= base_url(); ?>cuti/form/<?=$rowcuti->id?>"
-                                    class="btn"
-                                    >
-                                    <i class="fa fa-edit" style='color: purple'></i>
-                                    </a>
-                                    <a href="<?= base_url(); ?>cuti/delete/<?=$rowcuti->id?>"
-                                    class="btn"
-                                    >
-                                    <i class="fa fa-trash" style='color: red'></i>
-                                    </a>
-                                </td>
                             </tr>
                         <?php
                                 $no++;

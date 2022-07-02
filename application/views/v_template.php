@@ -40,15 +40,28 @@
   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
       <!-- Navbar -->
-      <nav class="main-header navbar navbar-expand navbar-white navbar-light ">
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="max-height: 60px;">
         <!-- Left navbar links -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" user="button"><i class="fas fa-bars"></i></a>
           </li>
         </ul>
-        <span class="navbar-text">
-          <a class="btn btn-danger text-white" href="<?=base_url();?>auth/logout" user="button">Logout</a>
+        
+        <span class="navbar-text" style="padding-right: .5rem; padding-top: 10px; padding-bottom: 0px; ">
+        
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex " style="overflow: inherit; ">
+        <div class="info">
+              <?= $this->session->userdata('name') ?>
+        </div>
+        <div class="image">
+        <div class="dropdown">
+        <img src="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle " alt="User Image" id="dropdownMenuButton" data-toggle="dropdown" aria-pressed="true">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="<?= base_url();?>profile">Profile</a>
+              <a class="dropdown-item" href="<?=base_url();?>auth/logout">Logout</a>
+            </div>
+            
         </span>
         <!-- Right navbar links -->
       </nav>
@@ -65,16 +78,6 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
-          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-
-          <div class="image">
-              <a href="<?= base_url(); ?>profile" ><img src="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"></a>
-            </div>
-
-            <div class="info">
-              <a href="#" class="d-block"><?= $this->session->userdata('name') ?></a>
-            </div>
-          </div>
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -108,7 +111,6 @@
                     </p>
                   </a>
                 </li>
-
               <?php
                 }
               ?>
@@ -132,8 +134,15 @@
               <?php
                 if($this->session->userdata('role') == 3){
                 ?>
+                <li class="nav-item">
+                  <a href="<?=base_url();?>pegawai" class="nav-link">
+                  <i class="nav-icon fa fa-suitcase"></i>
+                    <p>
+                      Daftar Pegawai
+                    </p>
+                  </a>
+                </li>
                <li class="nav-item">
-
                 <a href="<?=base_url();?>cuti/approval/" class="nav-link">
                   <i class="nav-icon fa fa-check-square"></i>
                   <p>
@@ -141,19 +150,18 @@
                   </p>
                 </a>
                 </li>
+                <li class="nav-item">
+                  <a href="<?=base_url();?>cuti/riwayat" class="nav-link">
+                  <i class="nav-icon fa fa-suitcase"></i>
+                    <p>
+                      Riwayat Cuti
+                    </p>
+                  </a>
+                </li>
 
                 <?php
                 }
                 ?>
-                
-              <li class="nav-item">
-                <a href="<?=base_url();?>auth/logout" class="nav-link">
-                  <i class="nav-icon fas fa-sign-out-alt"></i>
-                  <p>
-                    Logout
-                  </p>
-                </a>
-              </li>
             </ul>
           </nav>
           <!-- /.sidebar-menu -->

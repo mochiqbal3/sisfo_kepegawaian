@@ -19,6 +19,13 @@ class Cuti extends CI_Controller
         $this->load->view('v_template',$data);
     }
 
+	public function riwayat()
+    {
+		$data['listcuti'] = $this->M_cuti->getAllRiwayatCuti();
+        $data['content'] = 'cuti/v_riwayat_cuti';
+        $this->load->view('v_template',$data);
+    }
+
 	public function approval()
     {
 		$data['listcuti'] = $this->M_cuti->getByStatus(1);
@@ -52,41 +59,52 @@ class Cuti extends CI_Controller
 
 	public function save(){
 		$id = $this->input->post('id');
-		if($id==''){
-			$data = array(
-			
-				'user_id' => $this->session->userdata('userId'),
-				// 'name' => $this->input->post('name'),
-				'reason' => $this->input->post('reason'),
-				'jenis_cuti_id' => $this->input->post('jenis_cuti_id'),
-				'start_date' => $this->input->post('start_date'),
-				'end_date' => $this->input->post('end_date'),
-				'status' => '1',
-				// 'status' => $this->input->post('status'),
-				'responsible' => $this->input->post('responsible'),
+		$a = strtotime($this->input->post('start_date'));
+		$b = strtotime($this->input->post('end_date'));
+		$datediff = ($b - $a);
+		$daydiff += round($datediff / (60 * 60 * 24) )+ 1;
+		if($daydiff <= 12) {
+			if($id==''){
+				$data = array(
 				
-			);
-			$idCuti = $this->M_cuti->save($data);
-			$this->session->set_flashdata('success',' Data Cuti berhasil ditambahkan');
-			redirect('cuti');
-		}else{
-			$data = array(
-			
-				'user_id' => $this->session->userdata('userId'),
-				// 'name' => $this->input->post('name'),
-				'reason' => $this->input->post('reason'),
-				'jenis_cuti_id' => $this->input->post('jenis_cuti_id'),
-				'start_date' => $this->input->post('start_date'),
-				'end_date' => $this->input->post('end_date'),
-				'status' => '1',
-				// 'status' => $this->input->post('status'),
-				'responsible' => $this->input->post('responsible'),
+					'user_id' => $this->session->userdata('userId'),
+					// 'name' => $this->input->post('name'),
+					'reason' => $this->input->post('reason'),
+					'jenis_cuti_id' => $this->input->post('jenis_cuti_id'),
+					'start_date' => $this->input->post('start_date'),
+					'end_date' => $this->input->post('end_date'),
+					'status' => '1',
+					// 'status' => $this->input->post('status'),
+					'responsible' => $this->input->post('responsible'),
+					
+				);
+				$idCuti = $this->M_cuti->save($data);
+				$this->session->set_flashdata('success',' Data Cuti berhasil ditambahkan');
+				redirect('cuti');
+			}else{
+				$data = array(
 				
-			);
-			$this->M_cuti->update($data,$id);
-			$this->session->set_flashdata('success',' Data Cuti berhasil diedit');
-			redirect('cuti');
+					'user_id' => $this->session->userdata('userId'),
+					// 'name' => $this->input->post('name'),
+					'reason' => $this->input->post('reason'),
+					'jenis_cuti_id' => $this->input->post('jenis_cuti_id'),
+					'start_date' => $this->input->post('start_date'),
+					'end_date' => $this->input->post('end_date'),
+					'status' => '1',
+					// 'status' => $this->input->post('status'),
+					'responsible' => $this->input->post('responsible'),
+					
+				);
+				$this->M_cuti->update($data,$id);
+				$this->session->set_flashdata('success',' Data Cuti berhasil diedit');
+				redirect('cuti');
+			}
 		}
+		else{
+			$this->session->set_flashdata('warning',' Satus Cuti yang dipilih lebih dari 12 hari');
+				redirect('cuti/form');
+		}
+		
 	}
 
 	public function approve($id=""){

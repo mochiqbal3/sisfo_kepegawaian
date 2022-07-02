@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller
+class Pegawai extends CI_Controller
 {
 
     function __construct(){
@@ -13,22 +13,8 @@ class User extends CI_Controller
 
     public function index()
     {
-		$data['listuser'] = $this->M_user->getAll();
-        $data['content'] = 'user/v_user';
-        $this->load->view('v_template',$data);
-    }
-
-	public function form($id=""){
-		$data['row'] = $this->M_user->getById($id);
-		$data['content'] = 'user/v_form_user';
-		$data['roles'] = $this->M_user->getAllRoles()->result();
-		$this->load->view('v_template', $data);
-	}
-	
-	public function pegawai()
-    {
 		$data['listpegawai'] = $this->M_user->getAllPegawai();
-        $data['content'] = 'user/v_user';
+        $data['content'] = 'pegawai/v_pegawai';
         $this->load->view('v_template',$data);
     }
 

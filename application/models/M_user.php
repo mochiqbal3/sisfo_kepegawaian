@@ -15,6 +15,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query;
         }
 
+        public function getAllPegawai(){
+            $this->db->select('users.*, c.description, b.name, b.nik, b.birth_place, b.birth_date, b.address, b.married_date');
+            $this->db->from($this->_table);
+            $this->db->join($this->_table2 . " b",'b.user_id = users.id');
+            $this->db->join($this->_table3 . " c",'c.id = users.role_id');
+            $query = $this->db->get();
+            return $query;
+        }
+
         public function getAllRoles(){
             $this->db->select('*');
             $this->db->from($this->_table3);
@@ -30,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function getById($id){
-            $this->db->select('*');
+            $this->db->select('users.*, b.name, b.nik');
             $this->db->from($this->_table);
             $this->db->join($this->_table2 . " b",'b.user_id = users.id');
             $this->db->where('users.id', $id);

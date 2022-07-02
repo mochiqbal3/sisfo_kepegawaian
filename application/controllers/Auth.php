@@ -23,11 +23,15 @@ class Auth extends CI_Controller
         $username = $this->input->post('username');
 		$password = $this->input->post('password');
         
-        $user = $this->M_Login->validateUser($username);
+        $user = $this->M_Login->login($username);
         if($user->num_rows() > 0)
         {
             // kita ambil isi dari record
             $hasil = $user->row();
+            // echo "<pre>";
+            // var_dump($hasil);
+            // echo "</pre>";
+            // exit;
             if(password_verify($password, $hasil->password))
             {
                 $this->session->set_userdata('isLogin',true);
