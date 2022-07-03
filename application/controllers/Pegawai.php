@@ -7,6 +7,7 @@ class Pegawai extends CI_Controller
 
     function __construct(){
 		parent::__construct();
+		$this->load->model('M_profile');
 		$this->load->model('M_user');
 		$this->load->library('form_validation');
 	}
@@ -18,96 +19,33 @@ class Pegawai extends CI_Controller
         $this->load->view('v_template',$data);
     }
 
-	public function save(){
-		$id = $this->input->post('id');
-		
-		$data = array(
-			'username' => $this->input->post('username'),
-			'password' => password_hash($this->input->post('password'),PASSWORD_DEFAULT),
-			'role_id' => $this->input->post('role_id'),
-
-		);
-		if($id==''){
-			$idUser = $this->M_user->save($data);
-			$dataPersonal = array(
-				'user_id' => $idUser,
-				'nik' => $this->input->post('nik'),
-				'name' => $this->input->post('name'),
-
-				
-
-			);
-			$this->M_user->savePersonalData($dataPersonal);
-			$this->session->set_flashdata('success','User berhasil ditambahkan');
-			redirect('user');
-		}else{
-			$this->M_user->update($data,$id);
-			// echo "<pre>";
-            // var_dump($var);
-            // echo "</pre>";
-            // exit;
-			$dataPersonal = array(
-				'user_id' => $id,
-				'nik' => $this->input->post('nik'),
-				'name' => $this->input->post('name'),
-				
-			);
-			$this->M_user->updatePersonal($dataPersonal,$id);
-			$this->session->set_flashdata('success','User berhasil diedit');
-			redirect('user');
-		}
+	//PROFILE
+	public function profile($id=""){
+		$data['row'] = $this->M_profile->getByIdProfilePegawai($id);
+		$data['content'] = 'pegawai/v_profile';
+		$data['listuser'] = $this->M_user->getAll();
+		$data['profile'] = $this->M_profile->getProfile()->result();
+		$this->load->view('v_template', $data);
 	}
 
-
-	public function saveProfile(){
-		$id = $this->input->post('id');
-		$data = array(
-			'nik' => $this->input->post('nik'),
-			'name' => $this->input->post('name'),
-			'birth_place' => $this->input->post('birth_place'),
-			'birth_date' => $this->input->post('birth_date'),
-			'address' => $this->input->post('address'),
-			'married_date' => $this->input->post('married_date'),
-				
-		);
-		if($id==''){
-			$idUser = $this->M_user->savePersonalData($data);
-			$dataPersonal = array(
-				'user_id' => $idUser,
-				'nik' => $this->input->post('nik'),
-				'name' => $this->input->post('name'),
-				'birth_place' => $this->input->post('birth_place'),
-				'birth_date' => $this->input->post('birth_date'),
-				'address' => $this->input->post('address'),
-				'married_date' => $this->input->post('married_date'),
-				
-			);
-			$this->M_user->savePersonalData($dataPersonal);
-			$this->session->set_flashdata('success','User berhasil ditambahkan');
-			redirect('user/profile');
-		}else{
-			$this->M_user->updatePersonal($data,$id);
-			$dataPersonal = array(
-				'user_id' => $idUser,
-				'nik' => $this->input->post('nik'),
-				'name' => $this->input->post('name'),
-				'birth_place' => $this->input->post('birth_place'),
-				'birth_date' => $this->input->post('birth_date'),
-				'address' => $this->input->post('address'),
-				'married_date' => $this->input->post('married_date'),
-				
-			);
-			$this->M_user->updatePersonal($dataPersonal,$id);
-			$this->session->set_flashdata('success','User berhasil diedit');
-			redirect('user/profile');
-		}
+	//EDUCATION
+	public function education($id=""){
+		$data['row'] = $this->M_profile->getByIdProfilePegawai($id);
+		$data['content'] = 'pegawai/v_education';
+		$data['listuser'] = $this->M_user->getAll();
+		$data['listeducation'] = $this->M_profile->getEducationByUserId($id);
+		$data['education'] = $this->M_profile->getEducation()->result();
+		$this->load->view('v_template', $data);
 	}
 
-
-	public function delete($id)
-	{
-		$this->M_user->delete($id);
-		$this->session->set_flashdata('success','User berhasil dihapus');
-		redirect('user');
+	//FAMILY_MEMBER
+	public function family($id=""){
+		$data['row'] = $this->M_profile->getByIdProfilePegawai($id);
+		$data['content'] = 'pegawai/v_family';
+		$data['listuser'] = $this->M_user->getAll();
+		$data['listfamily'] = $this->M_profile->getFamilyByUserId($id);
+		$data['family'] = $this->M_profile->getFamily()->result();
+		$this->load->view('v_template', $data);
 	}
+
 }

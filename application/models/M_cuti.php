@@ -18,6 +18,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $query;
         }
 
+        public function getAllByStatus($status){
+            $this->db->select('leave.*, b.name, c.name pengaju, d.nama_cuti');
+            $this->db->from($this->_table);
+            $this->db->join($this->_table3. " b", 'b.user_id = leave.user_id');
+            $this->db->join($this->_table3. " c", 'c.user_id = leave.user_id');
+            $this->db->join($this->_table4. " d", 'd.id = leave.jenis_cuti_id');
+            $this->db->where('leave.user_id', $this->session->userdata('userId'));
+            $this->db->where('leave.status', $status);
+            $query = $this->db->get();
+            return $query;
+        }
+
         public function getAllRiwayatCuti(){
             $this->db->select('leave.*, b.name, c.name pengaju, d.nama_cuti');
             $this->db->from($this->_table);

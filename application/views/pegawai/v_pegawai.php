@@ -49,6 +49,7 @@
                             <th>TANGGAL LAHIR</th>
                             <th>ALAMAT</th>
                             <th>TANGGAL MENIKAH</th>
+                            <th>PROFILE LENGKAP</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,6 +66,11 @@
                                 <td><?=$rowpegawai->birth_date;?></td>
                                 <td><?=$rowpegawai->address;?></td>
                                 <td><?=$rowpegawai->married_date;?></td>
+                                <th>
+                                    <a href="<?= base_url(); ?>pegawai/profile/<?=$rowpegawai->id?>"class="btn btn-success">
+                                        Lihat
+                                    </a>
+                                </th>
                                 </td>
                             </tr>
                         <?php

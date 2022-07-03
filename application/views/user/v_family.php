@@ -5,9 +5,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-    <a class="nav-item nav-link" href="<?= base_url();?>profile">Profile</a>
-      <a class="nav-item nav-link active" href="<?= base_url();?>profile/education">Riwayat Pendidikan <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="<?= base_url();?>profile/family">Anggota Keluarga</a>
+      <a class="nav-item nav-link" href="<?= base_url();?>profile">Profile</a>
+      <a class="nav-item nav-link" href="<?= base_url();?>profile/education">Riwayat Pendidikan</a>
+      <a class="nav-item nav-link active" href="<?= base_url();?>profile/family">Anggota Keluarga<span class="sr-only">(current)</span></a>
     </div>
   </div>
 </nav>
@@ -42,15 +42,14 @@
                 <table class="table table-bordered table-striped">
         <thead>
                 <tr>
-                <th>NAMA SEKOLAH/PERGURUAN TINGGI</th>
-                <th>NAMA KEPALA SEKOLAH/REKTOR</th>
-                <th>TANGGAL MULAI</th>
-                <th>TANGGAL SELESAI</th>
-                <th>TANGGAL TERBIT SERTIFIKAT</th>
-                <th>ALAMAT</th>
-                <th>PENDIDIKAN</th>
+                <th>NAMA LENGKAP</th>
+                <th>TEMPAT LAHIR</th>
+                <th>TANGGAL LAHIR</th>
+                <th>JENIS PEKERJAAN</th>
+                <th>CATATAN</th>
+                <th>STATUS DALAM KELUARGA</th>
                 <th>
-                    <a href="<?= base_url(); ?>profile/form_education"class="btn btn-success">
+                    <a href="<?= base_url(); ?>profile/form_family"class="btn btn-success">
                         Tambah Data
                     </a>
                 </th>
@@ -58,34 +57,42 @@
                 </thead>
                 <tbody>
                 <?php
-                        foreach($listeducation->result() as $roweducation){
+                        foreach($listfamily->result() as $rowfamily){
                 ?>
                 <tr>
-                <td><?=$roweducation->school_name;?></td>
-                <td><?=$roweducation->principal;?></td>
-                <td><?=$roweducation->start_date;?></td>
-                <td><?=$roweducation->end_date;?></td>
-                <td><?=$roweducation->certificate_published_date;?></td>
-                <td><?=$roweducation->school_address;?></td>
+                <td><?=$rowfamily->name;?></td>
+                <td><?=$rowfamily->birth_place;?></td>
+                <td><?=$rowfamily->birth_date;?></td>
+                <td><?=$rowfamily->job;?></td>
+                <td><?=$rowfamily->note;?></td>
                 <td>
                 <?php 
-                  if($roweducation->flag == "1" ){
-                      echo "Sekolah Dasar";
-                  }elseif($roweducation->flag == "2" ){
-                      echo "Sekolah Menengah Pertama";
-                  }elseif($roweducation->flag == "3" ){
-                      echo "Sekolah Mengah Atas/Kejuruan";
-                  }elseif($roweducation->flag == "4" ){
-                      echo "Perguruan Tinggi";
-                  }
+                    if($rowfamily->flag == "1" ){
+                        echo "Kakek";
+                    }elseif($rowfamily->flag == "2" ){
+                        echo "Nenek";
+                    }elseif($rowfamily->flag == "3" ){
+                        echo "Suami";
+                    }elseif($rowfamily->flag == "4" ){
+                        echo "Istri";
+                    }elseif($rowfamily->flag == "5" ){
+                        echo "Kakak";
+                    }elseif($rowfamily->flag == "6" ){
+                        echo "Adik";
+                    }elseif($rowfamily->flag == "7" ){
+                        echo "Anak";
+                    }elseif($rowfamily->flag == "8" ){
+                        echo "Cucu";
+                    }
+                    
                   ?>  
                 </td>  
                 <td>
-                    <a href="<?= base_url(); ?>profile/form_education/<?=$roweducation->id?>"
+                    <a href="<?= base_url(); ?>profile/form_family/<?=$rowfamily->id?>"
                         class="btn">
                         <i class="fa fa-edit" style='color: purple'></i>
                             </a>
-                            <a href="<?= base_url(); ?>profile/deleteEducation/<?=$roweducation->id?>"
+                            <a href="<?= base_url(); ?>profile/deleteFamily/<?=$rowfamily->id?>"
                         class="btn">
                             <i class="fa fa-trash" style='color: red'></i>
                         </a>

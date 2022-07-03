@@ -16,6 +16,16 @@ class Cuti extends CI_Controller
     {
 		$data['listcuti'] = $this->M_cuti->getAll();
         $data['content'] = 'cuti/v_cuti';
+		$liststatusdisetujui = $this->M_cuti->getAllByStatus(2)->result();
+		$liststatusmenunggu = $this->M_cuti->getAllByStatus(1)->result();
+		$liststatusditolak = $this->M_cuti->getAllByStatus(3)->result();
+		$data['liststatusdisetujui'] = count($liststatusdisetujui);
+		$data['liststatusmenunggu'] = count($liststatusmenunggu);
+		$data['liststatusditolak'] = count($liststatusditolak);
+		// echo "<pre>";
+		// var_dump(count($liststatusdisetujui));
+		// echo "</pre>";
+		// exit;
         $this->load->view('v_template',$data);
     }
 
@@ -63,7 +73,43 @@ class Cuti extends CI_Controller
 		$b = strtotime($this->input->post('end_date'));
 		$datediff = ($b - $a);
 		$daydiff += round($datediff / (60 * 60 * 24) )+ 1;
-		if($daydiff <= 12) {
+		if($daydiff <= 12 && $this->input->post('jenis_cuti_id') == 1) {
+			if($id==''){
+				$data = array(
+				
+					'user_id' => $this->session->userdata('userId'),
+					// 'name' => $this->input->post('name'),
+					'reason' => $this->input->post('reason'),
+					'jenis_cuti_id' => $this->input->post('jenis_cuti_id'),
+					'start_date' => $this->input->post('start_date'),
+					'end_date' => $this->input->post('end_date'),
+					'status' => '1',
+					// 'status' => $this->input->post('status'),
+					'responsible' => $this->input->post('responsible'),
+					
+				);
+				$idCuti = $this->M_cuti->save($data);
+				$this->session->set_flashdata('success',' Data Cuti berhasil ditambahkan');
+				redirect('cuti');
+			}else{
+				$data = array(
+				
+					'user_id' => $this->session->userdata('userId'),
+					// 'name' => $this->input->post('name'),
+					'reason' => $this->input->post('reason'),
+					'jenis_cuti_id' => $this->input->post('jenis_cuti_id'),
+					'start_date' => $this->input->post('start_date'),
+					'end_date' => $this->input->post('end_date'),
+					'status' => '1',
+					// 'status' => $this->input->post('status'),
+					'responsible' => $this->input->post('responsible'),
+					
+				);
+				$this->M_cuti->update($data,$id);
+				$this->session->set_flashdata('success',' Data Cuti berhasil diedit');
+				redirect('cuti');
+			}
+		}else if($this->input->post('jenis_cuti_id') != 1){
 			if($id==''){
 				$data = array(
 				

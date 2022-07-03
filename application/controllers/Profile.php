@@ -19,7 +19,6 @@ class Profile extends CI_Controller
 		$data['profile'] = $this->M_profile->getProfile()->result();
 		$this->load->view('v_template', $data);
 	}
-
 	public function form_profile($id=""){
 		$data['row'] = $this->M_profile->getById($this->session->userdata('userId'),);
 		$data['content'] = 'user/v_form_profile';
@@ -28,24 +27,15 @@ class Profile extends CI_Controller
 		$data['profile'] = $this->M_profile->getProfile()->result();
 		$this->load->view('v_template', $data);
 	}
+
+	public function profilePegawai($id=""){
+		$data['row'] = $this->M_profile->getByIdProfilePegawai($id);
+		$data['content'] = 'user/v_profile';
+		$data['listuser'] = $this->M_user->getAll();
+		$data['profile'] = $this->M_profile->getProfile()->result();
+		$this->load->view('v_template', $data);
+	}
 	
-	public function form_education($id=""){
-		$data['row'] = $this->M_profile->getByIdEducation($id);
-		$data['content'] = 'user/v_form_education';
-		$data['listuser'] = $this->M_user->getAll();
-		$data['education'] = $this->M_profile->getEducation()->result();
-		$this->load->view('v_template', $data);
-	}
-
-	public function education($id=""){
-		$data['row'] = $this->M_profile->getByIdEducation($this->session->userdata('userId'),);
-		$data['content'] = 'user/v_education';
-		$data['listuser'] = $this->M_user->getAll();
-		$data['listeducation'] = $this->M_profile->getEducation();
-		$data['education'] = $this->M_profile->getEducation()->result();
-		$this->load->view('v_template', $data);
-	}
-
 	public function save(){
 		$id = $this->input->post('id');
 		$data = array(
@@ -89,6 +79,30 @@ class Profile extends CI_Controller
 			$this->session->set_flashdata('success','User berhasil diedit');
 			redirect('profile');
 		}
+	}
+
+	public function delete($id)
+	{
+		$this->M_profile->delete($id);
+		$this->session->set_flashdata('success','User berhasil dihapus');
+		redirect('profile');
+	}
+
+	//EDUCATION
+	public function education($id=""){
+		$data['row'] = $this->M_profile->getByIdEducation($this->session->userdata('userId'),);
+		$data['content'] = 'user/v_education';
+		$data['listuser'] = $this->M_user->getAll();
+		$data['listeducation'] = $this->M_profile->getEducation();
+		$data['education'] = $this->M_profile->getEducation()->result();
+		$this->load->view('v_template', $data);
+	}
+	public function form_education($id=""){
+		$data['row'] = $this->M_profile->getByIdEducation($id);
+		$data['content'] = 'user/v_form_education';
+		$data['listuser'] = $this->M_user->getAll();
+		$data['education'] = $this->M_profile->getEducation()->result();
+		$this->load->view('v_template', $data);
 	}
 
 	public function saveEducation(){
@@ -141,13 +155,73 @@ class Profile extends CI_Controller
 	{
 		$this->M_profile->deleteEducation($id);
 		$this->session->set_flashdata('success','User berhasil dihapus');
-		redirect('user');
+		redirect('profile/education');
 	}
 
-	public function delete($id)
+	//FAMILY_MEMBER
+	public function family($id=""){
+		$data['row'] = $this->M_profile->getByIdFamily($this->session->userdata('userId'),);
+		$data['content'] = 'user/v_family';
+		$data['listuser'] = $this->M_user->getAll();
+		$data['listfamily'] = $this->M_profile->getFamily();
+		$data['family'] = $this->M_profile->getFamily()->result();
+		$this->load->view('v_template', $data);
+	}
+	public function form_family($id=""){
+		$data['row'] = $this->M_profile->getByIdFamily($id);
+		$data['content'] = 'user/v_form_family';
+		$data['listuser'] = $this->M_user->getAll();
+		$data['family'] = $this->M_profile->getFamily()->result();
+		$this->load->view('v_template', $data);
+	}
+
+	public function saveFamily(){
+		$id = $this->input->post('id');
+		$data = array(
+			'user_id' => $this->session->userdata('userId'),
+			'name' => $this->input->post('name'),
+			'birth_place' => $this->input->post('birth_place'),
+			'birth_date' => $this->input->post('birth_date'),
+			'job' => $this->input->post('job'),
+			'note' => $this->input->post('note'),
+			'flag' => $this->input->post('flag'),
+				
+		);
+		if($id==''){
+			$idUser = $this->M_profile->saveFamily($data);
+			$dataFamily = array(
+				'user_id' => $this->session->userdata('userId'),
+				'name' => $this->input->post('name'),
+				'birth_place' => $this->input->post('birth_place'),
+				'birth_date' => $this->input->post('birth_date'),
+				'job' => $this->input->post('job'),
+				'note' => $this->input->post('note'),
+				'flag' => $this->input->post('flag'),
+			);
+			$this->session->set_flashdata('success','User berhasil ditambahkan');
+			redirect('profile/family');
+		}else{
+			$this->M_profile->updateFam($data,$id);
+			$dataFamily = array(
+				'user_id' => $this->session->userdata('userId'),
+				'name' => $this->input->post('name'),
+				'birth_place' => $this->input->post('birth_place'),
+				'birth_date' => $this->input->post('birth_date'),
+				'job' => $this->input->post('job'),
+				'note' => $this->input->post('note'),
+				'flag' => $this->input->post('flag'),
+				
+			);
+			$this->M_profile->updateFamily($dataFamily,$id);
+			$this->session->set_flashdata('success','User berhasil diedit');
+			redirect('profile/family');
+		}
+	}
+
+	public function deleteFamily($id)
 	{
-		$this->M_profile->delete($id);
+		$this->M_profile->deleteFamily($id);
 		$this->session->set_flashdata('success','User berhasil dihapus');
-		redirect('user');
+		redirect('profile/family');
 	}
 }
