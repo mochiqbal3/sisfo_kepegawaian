@@ -1,15 +1,18 @@
 <div class="col-sm-12">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-    <a class="nav-item nav-link" href="<?= base_url();?>profile">Profile</a>
-      <a class="nav-item nav-link active" href="<?= base_url();?>profile/education">Riwayat Pendidikan <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="<?= base_url();?>profile/family">Anggota Keluarga</a>
+    <a class="nav-item nav-link" href="<?= base_url();?>pegawai/profile/<?=$row->id?>">Profile</a>
+      <a class="nav-item nav-link active" href="<?= base_url();?>pegawai/education/<?=$row->id?>">Riwayat Pendidikan <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="<?= base_url();?>pegawai/family/<?=$row->id?>">Anggota Keluarga</a>
     </div>
   </div>
+  <a href="<?= base_url(); ?>pegawai" class="btn btn-success">
+  Kembali ke Daftar Pegawai
+    </a>
 </nav>
 <?php
             if($this->session->flashdata('success') || $this->session->flashdata('warning')){
@@ -49,11 +52,6 @@
                 <th>TANGGAL TERBIT SERTIFIKAT</th>
                 <th>ALAMAT</th>
                 <th>PENDIDIKAN</th>
-                <th>
-                    <a href="<?= base_url(); ?>profile/form_education"class="btn btn-success">
-                        Tambah Data
-                    </a>
-                </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -80,16 +78,6 @@
                   }
                   ?>  
                 </td>  
-                <td>
-                    <a href="<?= base_url(); ?>profile/form_education/<?=$roweducation->id?>"
-                        class="btn">
-                        <i class="fa fa-edit" style='color: purple'></i>
-                            </a>
-                            <a href="<?= base_url(); ?>profile/deleteEducation/<?=$roweducation->id?>"
-                        class="btn">
-                            <i class="fa fa-trash" style='color: red'></i>
-                        </a>
-                    </td>
                 
                 </tr>
                 <?php

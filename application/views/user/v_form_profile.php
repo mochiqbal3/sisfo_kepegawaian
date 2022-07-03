@@ -7,6 +7,7 @@
     <div class="navbar-nav">
     <a class="nav-item nav-link active" href="<?= base_url();?>profile">Profile <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="<?= base_url();?>profile/education">Riwayat Pendidikan</a>
+      <a class="nav-item nav-link" href="<?= base_url();?>profile/family">Anggota Keluarga</a>
     </div>
   </div>
 </nav>

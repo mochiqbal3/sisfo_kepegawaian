@@ -32,6 +32,38 @@
         <?php
             }
         ?>
+        <div class="row">
+            <div class="col-lg-3 col-6" style="max-width:15%">
+                <div class="small-box bg-success" >
+                    <div style="padding-left:5px" >
+                    <h2>
+                    <?=$liststatusdisetujui?>
+                    </h2>
+                    <p>Disetujui</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6" style="max-width:15%">
+                <div class="small-box bg-info" >
+                    <div style="padding-left:5px" >
+                    <h2>
+                    <?=$liststatusmenunggu?>
+                    </h2>
+                    <p>Menuggu Disetujui</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6" style="max-width:15%">
+                <div class="small-box bg-danger" >
+                    <div style="padding-left:5px" >
+                    <h2>
+                    <?=$liststatusditolak?>
+                    </h2>
+                    <p>Ditolak</p>
+                    </div>
+                </div>
+            </div>
+
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">List Data</h3>

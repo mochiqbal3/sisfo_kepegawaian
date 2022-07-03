@@ -6,89 +6,76 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="<?= base_url();?>profile">Profile</a>
-      <a class="nav-item nav-link active" href="<?= base_url();?>profile/education">Riwayat Pendidikan <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="<?= base_url();?>profile/family">Anggota Keluarga</a>
+      <a class="nav-item nav-link" href="<?= base_url();?>profile/education">Riwayat Pendidikan</a>
+      <a class="nav-item nav-link active" href="<?= base_url();?>profile/family">Anggota Keluarga<span class="sr-only">(current)</span></a>
     </div>
   </div>
 </nav>
-    <form action="<?=base_url();?>profile/saveEducation" method="post">
+    <form action="<?=base_url();?>profile/saveFamily" method="post">
         <input type="hidden" name="id" value="<?= (isset($row->id)?$row->id:'');''?>"
         class="form-control" />
         <table class="table" width="100%">
             <tr>
                 <td>
-                    Nama Sekolah/Perguruan Tinggi
+                    Nama Lengkap
                 </td>
                 <td>
                     :
                 </td>
                 <td>
-                    <input type="text" name="school_name" value="<?=(isset($row->school_name)?$row->school_name:'');?>"
+                    <input type="text" name="name" value="<?=(isset($row->name)?$row->name:'');?>"
                     required class="form-control"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Nama Kepala Sekolah/Rektor
+                    Tempat Lahir
                 </td>
                 <td>
                     :
                 </td>
                 <td>
-                <input type="text" name="principal" value="<?=(isset($row->principal)?$row->principal:'');?>"
+                <textarea name="birth_place" class="form-control"><?=isset($row->birth_place)?$row->birth_place:''?></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tanggal Lahir
+                </td>
+                <td>
+                    :
+                </td>
+                <td>
+                    <input type="date" name="birth_date" value="<?=(isset($row->birth_date)?$row->birth_date:'');?>"
                     required class="form-control"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Tanggal Mulai
+                    Pekerjaan
                 </td>
                 <td>
                     :
                 </td>
                 <td>
-                    <input type="date" name="start_place" value="<?=(isset($row->start_date)?$row->start_date:'');?>"
+                <input type="text" name="job" value="<?=(isset($row->job)?$row->job:'');?>"
                     required class="form-control"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Tanggal Selesai
+                    Catatan
                 </td>
                 <td>
                     :
                 </td>
                 <td>
-                <input type="date" name="end_date" value="<?=(isset($row->end_date)?$row->end_date:'');?>"
-                    required class="form-control"/>
+                <textarea name="note" class="form-control"><?=isset($row->note)?$row->note:''?></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
-                Tanggal Terbit Sertifikat
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                <input type="date" name="certificate_published_date" value="<?=(isset($row->certificate_published_date)?$row->certificate_published_date:'');?>"
-                    required class="form-control"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                Alamat
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                <textarea name="school_address" class="form-control"><?=isset($row->school_address)?$row->school_address:''?></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Pendidikan
+                    Status Dalam Keluarga
                 </td>
                 <td>
                     :
@@ -96,13 +83,21 @@
                 <td>
                     <select name="flag" class="form-control custom-select">
                     <option <?php if ($row->flag == 1) { 
-                        echo 'selected'; }?> value="1"><?=isset($row) && $row_educational_background->flag == $row->flag?>Sekolah Dasar</option>
+                        echo 'selected'; }?> value="1"><?=isset($row) && $row_family_member->flag == $row->flag?>Kakek</option>
                     <option <?php if ($row->flag == 2) { 
-                        echo 'selected'; }?> value="2"><?=isset($row) && $row_educational_background->flag == $row->flag?>Sekolah Menengah Pertama</option>
+                        echo 'selected'; }?> value="2"><?=isset($row) && $row_family_member->flag == $row->flag?>Neneka</option>
                     <option <?php if ($row->flag == 3) { 
-                        echo 'selected'; }?> value="3"><?=isset($row) && $row_educational_background->flag == $row->flag?>Sekolah Menengah Atas/Kejuruan</option>
+                        echo 'selected'; }?> value="3"><?=isset($row) && $row_family_member->flag == $row->flag?>Suami</option>
                     <option <?php if ($row->flag == 4) { 
-                        echo 'selected'; }?> value="4"><?=isset($row) && $row_educational_background->flag == $row->flag?>Perguruan Tinggi</option>
+                        echo 'selected'; }?> value="4"><?=isset($row) && $row_family_member->flag == $row->flag?>Istri</option>
+                    <option <?php if ($row->flag == 5) { 
+                        echo 'selected'; }?> value="5"><?=isset($row) && $row_family_member->flag == $row->flag?>Kakak</option>
+                    <option <?php if ($row->flag == 6) { 
+                        echo 'selected'; }?> value="6"><?=isset($row) && $row_family_member->flag == $row->flag?>Adik</option>
+                    <option <?php if ($row->flag == 7) { 
+                        echo 'selected'; }?> value="7"><?=isset($row) && $row_family_member->flag == $row->flag?>Anak</option>
+                    <option <?php if ($row->flag == 8) { 
+                        echo 'selected'; }?> value="8"><?=isset($row) && $row_family_member->flag == $row->flag?>Cucu</option>
                     </select>
                 </td>
             </tr>
@@ -114,7 +109,7 @@
                 </td>
                 <td>
                     <input style="align-self: flex-end" type="submit" class="btn btn-success" value="Simpan">
-                    <a href="<?= base_url(); ?>profile/education"class="btn btn-danger">Kembali</a>
+                    <a href="<?= base_url(); ?>profile/family"class="btn btn-danger">Kembali</a>
             </td>
             <td></td>
             <td></td>
