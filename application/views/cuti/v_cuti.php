@@ -109,7 +109,7 @@
                                     echo "Ditolak";
                                 }
                                 ?></td>
-                                <td><?=$rowcuti->name;?></td>
+                                <td><?=$rowcuti->responsible;?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>cuti/form/<?=$rowcuti->id?>"
                                     class="btn"
