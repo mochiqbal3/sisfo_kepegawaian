@@ -72,7 +72,7 @@
                                     echo "Ditolak";
                                 }
                                 ?></td>
-                                <td><?=$rowcuti->name;?></td>
+                                <td><?=$rowcuti->responsible;?></td>
                             </tr>
                         <?php
                                 $no++;

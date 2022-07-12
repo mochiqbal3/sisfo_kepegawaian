@@ -126,7 +126,14 @@
                     </p>
                   </a>
                 </li>
-
+                <li class="nav-item">
+                  <a href="<?=base_url();?>penunjuk_pelatihan" class="nav-link">
+                    <i class="nav-icon fa fa-suitcase"></i>
+                    <p>
+                      Penunjukan Pelatihan
+                    </p>
+                  </a>
+                </li>
               <?php
                 }
               ?>
@@ -155,6 +162,14 @@
                   <i class="nav-icon fa fa-suitcase"></i>
                     <p>
                       Riwayat Cuti
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?=base_url();?>penunjuk_pelatihan/riwayat" class="nav-link">
+                    <i class="nav-icon fa fa-suitcase"></i>
+                    <p>
+                      Penunjukan Pelatihan
                     </p>
                   </a>
                 </li>
