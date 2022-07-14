@@ -11,13 +11,13 @@
                   if($this->session->userdata('role') == 2){
         ?>
         <td style="text-align:right"><a href="<?= base_url(); ?>penunjuk_pelatihan"class="btn btn-success">
-                Kembali ke Daftar Penujukan Pelatihan
+                Kembali
         </a></td>
         <?php
                   }elseif($this->session->userdata('role') == 3){
         ?>
         <td style="text-align:right"><a href="<?= base_url(); ?>penunjuk_pelatihan/riwayat"class="btn btn-success">
-                Kembali ke Daftar Penujukan Pelatihan
+                Kembali
         </a></td>
         <?php
                   }
