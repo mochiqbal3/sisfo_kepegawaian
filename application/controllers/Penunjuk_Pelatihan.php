@@ -38,6 +38,13 @@ class Penunjuk_pelatihan extends CI_Controller
 		$this->load->view('v_template', $data);
 	}
 
+	public function detail($id=""){
+		$data['row'] = $this->M_penunjuk_pelatihan->getById($id);
+		$data['content'] = 'pelatihan/v_form_detail_penunjukan';
+		$data['users'] = $this->M_penunjuk_pelatihan->getAllUsers()->result();
+		$this->load->view('v_template', $data);
+	}
+
 	public function save(){
 		$id = $this->input->post('id');
 		$data = array(

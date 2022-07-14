@@ -42,10 +42,10 @@
                             <th>NO</th>
                             <th>PENGISI PELATIHAN</th>
                             <th>NAMA PELATIHAN</th>
-                            <th>TANGGAL MULAI</th>
-                            <th>TANGAL AKHIR</th> 
+                            <!-- <th>TANGGAL MULAI</th>
+                            <th>TANGAL AKHIR</th>  -->
                             <!-- <th>TANGGAL PUBLIKASI SERTIFIKAT</th> -->
-                            <th>ALAMAT</th>
+                            <!-- <th>ALAMAT</th> -->
                             <th>NOTE</th>
                             <th>PERMOHONAN</th>
                             <th>PENUNJUK</th>
@@ -65,10 +65,10 @@
                                 <td><?=$no?></td>
                                 <td><?=$rowtraining->name;?></td>
                                 <td><?=$rowtraining->training_name;?></td>
-                                <td><?=$rowtraining->start_date;?></td>
-                                <td><?=$rowtraining->end_date;?></td>
+                                <!-- <td><?=$rowtraining->start_date;?></td>
+                                <td><?=$rowtraining->end_date;?></td> -->
                                 <!-- <td><?=$rowtraining->certificate_published_date;?></td> -->
-                                <td><?=$rowtraining->address;?></td>
+                                <!-- <td><?=$rowtraining->address;?></td> -->
                                 <td><?=$rowtraining->note;?></td>
                                 <td><?php 
                                 if($rowtraining->flag == "1" ){
@@ -79,6 +79,11 @@
                                 ?></td>
                                 <td><?=$rowtraining->determiner_id;?></td>
                                 <td>
+                                    <a href="<?= base_url(); ?>penunjuk_pelatihan/detail/<?=$rowtraining->id?>"
+                                    class="btn"
+                                    >
+                                    <i class="fa fa-info-circle" style='color: blue'></i>
+                                    </a>
                                     <a href="<?= base_url(); ?>penunjuk_pelatihan/form/<?=$rowtraining->id?>"
                                     class="btn"
                                     >

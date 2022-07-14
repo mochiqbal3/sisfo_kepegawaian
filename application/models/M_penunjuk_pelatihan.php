@@ -8,18 +8,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         public function getAll(){
-            $this->db->select('training.*, b.name');
+            $this->db->select('training.*, b.name, c.name determiner_id');
             $this->db->from($this->_table);
             $this->db->join($this->_table3. " b", 'b.user_id = training.user_id');
+            $this->db->join($this->_table3. " c", 'c.user_id = training.determiner_id');
             $this->db->where('training.user_id', $this->session->userdata('userId'));
             $query = $this->db->get();
             return $query;
         }
 
         public function getAllRiwayat(){
-            $this->db->select('training.*, b.name');
+            $this->db->select('training.*, b.name, c.name determiner_id');
             $this->db->from($this->_table);
             $this->db->join($this->_table3. " b", 'b.user_id = training.user_id');
+            $this->db->join($this->_table3. " c", 'c.user_id = training.determiner_id');
             $query = $this->db->get();
             return $query;
         }

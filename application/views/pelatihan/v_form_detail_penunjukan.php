@@ -1,6 +1,33 @@
 <div class="col-sm-12">
     <div class="caption">
-        <h3>Form Penunjukan Pelatihan</h3>
+        <table width="100%">
+
+        <tr>
+        <td>
+        <h3>Details Penunjukan Pelatihan</h3>
+        </td>
+        <td>
+        <?php 
+                  if($this->session->userdata('role') == 2){
+        ?>
+        <td style="text-align:right"><a href="<?= base_url(); ?>penunjuk_pelatihan"class="btn btn-success">
+                Kembali ke Daftar Penujukan Pelatihan
+        </a></td>
+        <?php
+                  }elseif($this->session->userdata('role') == 3){
+        ?>
+        <td style="text-align:right"><a href="<?= base_url(); ?>penunjuk_pelatihan/riwayat"class="btn btn-success">
+                Kembali ke Daftar Penujukan Pelatihan
+        </a></td>
+        <?php
+                  }
+        ?>
+        </td>
+        
+        </td>
+        </tr>
+        </table>
+        
     </div>
     
     <?php
@@ -32,12 +59,12 @@
                 <?php 
                   if($this->session->userdata('role') == 2){
                 ?>
-                <input type="text" name="determiner_id" value="<?=(isset($row->determainer_id)?$row->determainer_id:'');?><?= $this->session->userdata('name') ?>"
+                <input disabled type="text" name="determiner_id" value="<?=(isset($row->determainer_id)?$row->determainer_id:'');?><?= $this->session->userdata('name') ?>"
                     required class="form-control"/>    
                 <?php  
                     }elseif($this->session->userdata('role') == 3){
                 ?>
-                      <select name="determiner_id" class="form-control custom-select">
+                      <select disabled name="determiner_id" class="form-control custom-select">
                     <?php
 								foreach ($users as $row_users) {
 									if (isset($row) && $row_users->id == $row->user_id) {
@@ -61,7 +88,7 @@
                     :
                 </td>
                 <td>
-                    <input type="text" name="training_name" value="<?=(isset($row->training_name)?$row->training_name:'');?>"
+                    <input disabled type="text" name="training_name" value="<?=(isset($row->training_name)?$row->training_name:'');?>"
                     required class="form-control"/>
                 </td>
             </tr>
@@ -73,7 +100,7 @@
                     :
                 </td>
                 <td>
-                    <input type="date" name="start_date" value="<?=(isset($row->start_date)?$row->start_date:'');?>"
+                    <input disabled type="date" name="start_date" value="<?=(isset($row->start_date)?$row->start_date:'');?>"
                     required class="form-control"/>
                 </td>
             </tr>
@@ -85,7 +112,7 @@
                     :
                 </td>
                 <td>
-                    <input type="date" name="end_date" value="<?=(isset($row->end_date)?$row->end_date:'');?>"
+                    <input disabled type="date" name="end_date" value="<?=(isset($row->end_date)?$row->end_date:'');?>"
                     required class="form-control"/>
                 </td>
             </tr>
@@ -97,7 +124,7 @@
                     :
                 </td>
                 <td>
-                    <input type="date" name="certificate_published_date" value="<?=(isset($row->certificate_published_date)?$row->certificate_published_date:'');?>"
+                    <input disabled type="date" name="certificate_published_date" value="<?=(isset($row->certificate_published_date)?$row->certificate_published_date:'');?>"
                     required class="form-control"/>
                 </td>
             </tr>
@@ -109,7 +136,7 @@
                     :
                 </td>
                 <td>
-                <textarea name="address" required class="form-control"><?=isset($row->address)?$row->address:''?></textarea>
+                <textarea disabled name="address" required class="form-control"><?=isset($row->address)?$row->address:''?></textarea>
             </tr>
             <tr>
                 <td>
@@ -119,7 +146,7 @@
                     :
                 </td>
                 <td>
-                <textarea name="note" required class="form-control"><?=isset($row->note)?$row->note:''?></textarea>
+                <textarea disabled name="note" required class="form-control"><?=isset($row->note)?$row->note:''?></textarea>
             </tr>
             <tr>
                 <td>
@@ -132,7 +159,7 @@
                 <?php
                 if($this->session->userdata('role') == 2){
                 ?>
-                    <select name="flag" class="form-control custom-select">
+                    <select disabled  name="flag" class="form-control custom-select">
                     <option <?php if ($row->flag == 2) { 
                         echo 'selected'; }?> value="2"><?=isset($row) && $row_training->flag == $row->flag?>Pengajuan pelatihan</option>
                     </select>
@@ -144,7 +171,7 @@
                 <?php
                 if($this->session->userdata('role') == 3){
                 ?>
-                <select name="flag" class="form-control custom-select">
+                <select disabled name="flag" class="form-control custom-select">
                     <option <?php if ($row->flag == 1) { 
                         echo 'selected'; }?> value="1"><?=isset($row) && $row_training->flag == $row->flag?>Penunjukan Pelatihan</option>
                     <option <?php if ($row->flag == 2) { 
@@ -173,12 +200,12 @@
                 <?php 
                   if($this->session->userdata('role') == 2){
                 ?>
-                <input type="text" name="determiner_id" value="<?=(isset($row->determainer_id)?$row->determainer_id:'');?><?= $this->session->userdata('name') ?>"
+                <input disabled type="text" name="determiner_id" value="<?=(isset($row->determainer_id)?$row->determainer_id:'');?><?= $this->session->userdata('name') ?>"
                     required class="form-control"/>    
                 <?php  
                     }elseif($this->session->userdata('role') == 3){
                 ?>
-                      <select name="determiner_id" class="form-control custom-select">
+                      <select disabled name="determiner_id" class="form-control custom-select">
                     <?php
 								foreach ($users as $row_users) {
 									if (isset($row) && $row_users->id == $row->user_id) {
@@ -196,11 +223,7 @@
             </tr>
 
             <tr>
-                <td></td>
-                <td></td>
-                <td>
-                    <input stle="align-self: flex-end" type="submit" class="btn btn-success" value="Simpan">
-                </td>
+                
             </tr>
         </table>
     </form>
