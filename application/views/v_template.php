@@ -128,7 +128,7 @@
                 </li>
                 <li class="nav-item">
                   <a href="<?=base_url();?>penunjuk_pelatihan" class="nav-link">
-                    <i class="nav-icon fa fa-suitcase"></i>
+                   <i class="nav-icon fa fa-graduation-cap"></i>
                     <p>
                       Penunjukan Pelatihan
                     </p>
@@ -143,7 +143,7 @@
                 ?>
                 <li class="nav-item">
                   <a href="<?=base_url();?>pegawai" class="nav-link">
-                  <i class="nav-icon fa fa-suitcase"></i>
+                  <i class="nav-icon fa fa-user"></i>
                     <p>
                       Daftar Pegawai
                     </p>
@@ -167,7 +167,7 @@
                 </li>
                 <li class="nav-item">
                   <a href="<?=base_url();?>penunjuk_pelatihan/riwayat" class="nav-link">
-                    <i class="nav-icon fa fa-suitcase"></i>
+                    <i class="nav-icon fa fa-graduation-cap"></i>
                     <p>
                       Penunjukan Pelatihan
                     </p>
