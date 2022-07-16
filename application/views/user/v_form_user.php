@@ -28,7 +28,7 @@
                     :
                 </td>
                 <td>
-                    <textarea name="nik" class="form-control"><?=isset($row->nik)?$row->nik:''?></textarea>
+                    <textarea name="nik" required class="form-control"><?=isset($row->nik)?$row->nik:''?></textarea>
                 </td>
             </tr>
             <tr>
