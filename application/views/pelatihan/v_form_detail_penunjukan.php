@@ -4,7 +4,7 @@
 
         <tr>
         <td>
-        <h3>Details Penunjukan Pelatihan</h3>
+        <h3>Detail Permohonan dan Penunjukan Pelatihan</h3>
         </td>
         <td>
         <?php 
