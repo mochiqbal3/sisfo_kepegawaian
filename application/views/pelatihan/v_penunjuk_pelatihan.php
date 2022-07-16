@@ -1,9 +1,13 @@
 <div class="col-sm-12">
     <div class="thumbnail">
         <div class="caption">
-            <h3>
-                Penunjukan Pelatihan
-            </h3>
+        <?php 
+                  if($this->session->userdata('role') == 2){
+                      echo "<h3>Pengajuan Pelatihan</h3>";
+                  }elseif($this->session->userdata('role') == 3){
+                      echo "<h3>Penunjukan Pelatihan</h3>";
+                  }
+                  ?> 
         </div>
         <?php
             if($this->session->flashdata('success') || $this->session->flashdata('warning')){

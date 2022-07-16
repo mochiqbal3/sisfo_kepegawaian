@@ -14,17 +14,8 @@
                     :
                 </td>
                 <td>
-                    <select name="username" class="form-control custom-select">
-                    <?php
-								foreach ($users as $row_users) {
-									if (isset($row) && $row_users->id == $row->user_id) {
-										echo '<option value="' . $row_users->id . '" selected>' . $row_users->username . '</option>';
-									} else {
-										echo '<option value="' . $row_users->id . '">' . $row_users->username . '</option>';
-									}
-								}
-								?>
-                        </select>
+                <input disabled type="text" name="username " value="<?=(isset($row->username)?$row->username:'');?>"
+                    required class="form-control"/>
                 </td>
             </tr>
             <tr>
