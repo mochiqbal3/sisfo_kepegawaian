@@ -49,11 +49,7 @@
                             <th>NOTE</th>
                             <th>PERMOHONAN</th>
                             <th>PENUNJUK</th>
-                            <th>
-                                <a href="<?= base_url(); ?>penunjuk_pelatihan/form"class="btn btn-success">
-                                    Tambah Data
-                                </a>
-                            </th>
+                            <th>DETAIL</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,16 +79,6 @@
                                     class="btn"
                                     >
                                     <i class="fa fa-info-circle" style='color: blue'></i>
-                                    </a>
-                                    <a href="<?= base_url(); ?>penunjuk_pelatihan/form/<?=$rowtraining->id?>"
-                                    class="btn"
-                                    >
-                                    <i class="fa fa-edit" style='color: purple'></i>
-                                    </a>
-                                    <a href="<?= base_url(); ?>penunjuk_pelatihan/delete/<?=$rowtraining->id?>"
-                                    class="btn"
-                                    >
-                                    <i class="fa fa-trash" style='color: red'></i>
                                     </a>
                                 </td>
                             </tr>

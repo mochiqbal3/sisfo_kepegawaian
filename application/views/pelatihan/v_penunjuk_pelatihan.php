@@ -51,7 +51,7 @@
                             <th>PENGAJU</th>
                             <th>
                                 <a href="<?= base_url(); ?>penunjuk_pelatihan/form"class="btn btn-success">
-                                    TAMBAH
+                                    TAMBAH Data
                                 </a>
                             </th>
                         </tr>
@@ -82,17 +82,17 @@
                                     <a href="<?= base_url(); ?>penunjuk_pelatihan/detail/<?=$rowtraining->id?>"
                                     class="btn"
                                     >
-                                    <i class="fa fa-info-circle" style='color: blue'></i>
+                                    <i class="fa fa-info-circle" style='color: blue'> </i>
                                     </a>
                                     <a href="<?= base_url(); ?>penunjuk_pelatihan/form/<?=$rowtraining->id?>"
                                     class="btn"
                                     >
-                                    <i class="fa fa-edit" style='color: purple'></i>
+                                    <i class="fa fa-edit" style='color: purple'> </i>
                                     </a>
                                     <a href="<?= base_url(); ?>penunjuk_pelatihan/delete/<?=$rowtraining->id?>"
                                     class="btn"
                                     >
-                                    <i class="fa fa-trash" style='color: red'></i>
+                                    <i class="fa fa-trash" style='color: red'> </i>
                                     </a>
                                 </td>
                             </tr>

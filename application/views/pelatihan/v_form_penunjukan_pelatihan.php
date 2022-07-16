@@ -200,6 +200,8 @@
                 <td></td>
                 <td>
                     <input stle="align-self: flex-end" type="submit" class="btn btn-success" value="Simpan">
+
+                    <a href="<?= base_url(); ?>penunjuk_pelatihan"class="btn btn-danger">Kembali</a>
                 </td>
             </tr>
         </table>
