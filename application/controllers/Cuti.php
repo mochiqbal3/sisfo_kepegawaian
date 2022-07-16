@@ -33,6 +33,16 @@ class Cuti extends CI_Controller
     {
 		$data['listcuti'] = $this->M_cuti->getAllRiwayatCuti();
         $data['content'] = 'cuti/v_riwayat_cuti';
+		$liststatusdisetujui = $this->M_cuti->getAllByStatusRiwayat(2)->result();
+		$liststatusmenunggu = $this->M_cuti->getAllByStatusRiwayat(1)->result();
+		$liststatusditolak = $this->M_cuti->getAllByStatusRiwayat(3)->result();
+		$data['liststatusdisetujui'] = count($liststatusdisetujui);
+		$data['liststatusmenunggu'] = count($liststatusmenunggu);
+		$data['liststatusditolak'] = count($liststatusditolak);
+		// echo "<pre>";
+		// var_dump(count($liststatusdisetujui));
+		// echo "</pre>";
+		// exit;
         $this->load->view('v_template',$data);
     }
 
