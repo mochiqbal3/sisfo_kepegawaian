@@ -95,6 +95,7 @@
                 <?php
                 if($this->session->userdata('role') == 1){
               ?>
+              <li class="nav-header">USERS</li>
                 <li class="nav-item">
                   <a href="<?=base_url();?>user" class="nav-link">
                     <i class="nav-icon fa fa-user"></i>
@@ -118,6 +119,7 @@
               <?php
                 if($this->session->userdata('role') == 2){
                 ?>
+                <li class="nav-header">CUTI</li>
                <li class="nav-item">
                   <a href="<?=base_url();?>cuti" class="nav-link">
                     <i class="nav-icon fa fa-suitcase"></i>
@@ -126,11 +128,12 @@
                     </p>
                   </a>
                 </li>
+                <li class="nav-header">PELATIHAN</li>
                 <li class="nav-item">
                   <a href="<?=base_url();?>penunjuk_pelatihan" class="nav-link">
                    <i class="nav-icon fa fa-graduation-cap"></i>
                     <p>
-                      Penunjukan Pelatihan
+                      Permohonan Pelatihan
                     </p>
                   </a>
                 </li>
@@ -141,6 +144,7 @@
               <?php
                 if($this->session->userdata('role') == 3){
                 ?>
+                <li class="nav-header">PEGAWAI</li>
                 <li class="nav-item">
                   <a href="<?=base_url();?>pegawai" class="nav-link">
                   <i class="nav-icon fa fa-user"></i>
@@ -149,6 +153,7 @@
                     </p>
                   </a>
                 </li>
+              <li class="nav-header">CUTI</li>
                <li class="nav-item">
                 <a href="<?=base_url();?>cuti/approval/" class="nav-link">
                   <i class="nav-icon fa fa-check-square"></i>
@@ -165,11 +170,20 @@
                     </p>
                   </a>
                 </li>
+                <li class="nav-header">PELATIHAN</li>
+                <li class="nav-item">
+                  <a href="<?=base_url();?>penunjuk_pelatihan" class="nav-link">
+                   <i class="nav-icon fa fa-graduation-cap"></i>
+                    <p>
+                      Penunjukan Pelatihan
+                    </p>
+                  </a>
+                </li>
                 <li class="nav-item">
                   <a href="<?=base_url();?>penunjuk_pelatihan/riwayat" class="nav-link">
                     <i class="nav-icon fa fa-graduation-cap"></i>
                     <p>
-                      Penunjukan Pelatihan
+                      Riwayat Penunjukan Pelatihan
                     </p>
                   </a>
                 </li>
