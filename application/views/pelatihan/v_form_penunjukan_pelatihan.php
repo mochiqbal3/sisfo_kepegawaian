@@ -1,6 +1,12 @@
 <div class="col-sm-12">
     <div class="caption">
-        <h3>Form Penunjukan Pelatihan</h3>
+        <?php 
+                  if($this->session->userdata('role') == 2){
+                      echo "<h3>Form Pengajuan Pelatihan</h3>";
+                  }elseif($this->session->userdata('role') == 3){
+                      echo "<h3>Form Penunjukan Pelatihan</h3>";
+                  }
+                  ?> 
     </div>
     
     <?php
